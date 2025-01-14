@@ -1,0 +1,39 @@
+package com.application.rest.services.impl;
+
+import com.application.rest.entities.Maker;
+import com.application.rest.persistence.IMakerDAO;
+import com.application.rest.services.IMakerService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class MakerServiceImpl implements IMakerService {
+
+    private final IMakerDAO makerDAO;
+
+    public MakerServiceImpl(IMakerDAO makerDAO) {
+        this.makerDAO = makerDAO;
+    }
+
+    @Override
+    public List<Maker> findAll() {
+        return makerDAO.findAll();
+    }
+
+    @Override
+    public Optional<Maker> findById(Long id) {
+        return makerDAO.findById(id);
+    }
+
+    @Override
+    public void save(Maker maker) {
+        makerDAO.save(maker);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        makerDAO.deleteById(id);
+    }
+}
